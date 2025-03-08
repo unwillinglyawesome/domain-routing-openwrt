@@ -576,7 +576,7 @@ add_dns_resolver() {
 }
 
 add_packages() {
-    for package in curl nano; do
+    for package in curl; do
         if opkg list-installed | grep -q "^$package "; then
             printf "\033[32;1m$package already installed\033[0m\n"
         else
