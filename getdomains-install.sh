@@ -594,68 +594,20 @@ add_packages() {
 }
 
 add_getdomains() {
-    echo "Choose you country"
-    echo "Select:"
-    echo "1) Russia inside. You are inside Russia"
-    echo "2) Russia outside. You are outside of Russia, but you need access to Russian resources"
-    echo "3) Ukraine. uablacklist.net list"
-    echo "4) Skip script creation"
-
-    while true; do
-    read -r -p '' COUNTRY
-        case $COUNTRY in 
-
-        1) 
-            COUNTRY=russia_inside
-            break
-            ;;
-
-        2)
-            COUNTRY=russia_outside
-            break
-            ;;
-
-        3) 
-            COUNTRY=ukraine
-            break
-            ;;
-
-        4) 
-            echo "Skiped"
-            COUNTRY=0
-            break
-            ;;
-
-        *)
-            echo "Choose from the following options"
-            ;;
-        esac
-    done
-
-    if [ "$COUNTRY" == 'russia_inside' ]; then
-        EOF_DOMAINS=DOMAINS=https://raw.githubusercontent.com/itdoginfo/allow-domains/main/Russia/inside-dnsmasq-nfset.lst
-    elif [ "$COUNTRY" == 'russia_outside' ]; then
-        EOF_DOMAINS=DOMAINS=https://raw.githubusercontent.com/itdoginfo/allow-domains/main/Russia/outside-dnsmasq-nfset.lst
-    elif [ "$COUNTRY" == 'ukraine' ]; then
-        EOF_DOMAINS=DOMAINS=https://raw.githubusercontent.com/itdoginfo/allow-domains/main/Ukraine/inside-dnsmasq-nfset.lst
-    fi
-
-    if [ "$COUNTRY" != '0' ]; then
-        printf "\033[32;1mCreate script /etc/init.d/getdomains\033[0m\n"
-
-cat << EOF > /etc/init.d/getdomains
+    cat << EOF > /etc/init.d/getdomains
 #!/bin/sh /etc/rc.common
 
 START=99
 
 start () {
-    $EOF_DOMAINS
-EOF
-cat << 'EOF' >> /etc/init.d/getdomains
+    PROXY_LIST=https://raw.githubusercontent.com/unwillinglyawesome/domains/refs/heads/master/lists/proxy.lst
+    ZAPRET_LIST=https://raw.githubusercontent.com/unwillinglyawesome/domains/refs/heads/master/lists/zapret.lst
+
     count=0
     while true; do
         if curl -m 3 github.com; then
-            curl -f $DOMAINS --output /tmp/dnsmasq.d/domains.lst
+            curl -f $PROXY_LIST --output /tmp/dnsmasq.d/domains.lst
+            curl -f $ZAPRET_LIST --output /tmp/zapret.lst
             break
         else
             echo "GitHub is not available. Check the internet availability [$count]"
@@ -666,7 +618,14 @@ cat << 'EOF' >> /etc/init.d/getdomains
     if dnsmasq --conf-file=/tmp/dnsmasq.d/domains.lst --test 2>&1 | grep -q "syntax check OK"; then
         /etc/init.d/dnsmasq restart
     fi
+
+    if [ -f /etc/init.d/zapret ]; then
+        /etc/init.d/zapret restart
+    else
+        echo "/etc/init.d/zapret not found, skipping restart"
+    fi
 }
+
 EOF
 
         chmod +x /etc/init.d/getdomains
