@@ -643,7 +643,6 @@ EOF
         printf "\033[32;1mStart script\033[0m\n"
 
         /etc/init.d/getdomains start
-    fi
 }
 
 add_internal_wg() {
