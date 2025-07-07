@@ -606,8 +606,8 @@ start () {
     count=0
     while true; do
         if curl -m 3 github.com; then
-            curl -f $PROXY_LIST --output /tmp/dnsmasq.d/domains.lst
-            curl -f $ZAPRET_LIST --output /tmp/zapret.lst
+            curl -f \$PROXY_LIST --output /tmp/dnsmasq.d/domains.lst
+            curl -f \$ZAPRET_LIST --output /tmp/zapret.lst
             break
         else
             echo "GitHub is not available. Check the internet availability [$count]"
