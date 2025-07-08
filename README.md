@@ -11,7 +11,9 @@ Shell скрипт и [роль для Ansible](https://galaxy.ansible.com/ui/st
 ```
 sh <(wget -O - https://raw.githubusercontent.com/unwillinglyawesome/domain-routing-openwrt/master/getdomains-install.sh)
 ```
-
+```
+sh <(wget -O - https://raw.githubusercontent.com/unwillinglyawesome/domain-routing-openwrt/master/install-zapret.sh)
+```
 # Скрипт для удаления
 ```
 sh <(wget -O - https://raw.githubusercontent.com/unwillinglyawesome/domain-routing-openwrt/refs/heads/master/getdomains-uninstall.sh)
