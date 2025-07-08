@@ -923,8 +923,8 @@ install_awg_packages() {
 }
 
 install_zapret() {
-    ZAPRET_URL="https://github.com/bol-van/zapret/releases/download/v71.1.1/zapret-v71.1.1-openwrt-embedded.tar.gz"
-    TOP_FOLDER="zapret-v71.1.1"
+    ZAPRET_URL="https://github.com/bol-van/zapret/releases/download/v71.2/zapret-v71.2-openwrt-embedded.tar.gz"
+    TOP_FOLDER="zapret-v71.2"
 
     wget "$ZAPRET_URL" -O /tmp/zapret.tar.gz
     tar -xzf /tmp/zapret.tar.gz -C /tmp/
