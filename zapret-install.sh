@@ -35,7 +35,7 @@ NFQWS_UDP_PKT_OUT=$((6+$AUTOHOSTLIST_RETRANS_THRESHOLD))
 NFQWS_UDP_PKT_IN=0
 NFQWS_OPT="
 --filter-udp=50000-50100 --filter-l7=discord,stun --dpi-desync=fake --dpi-desync-repeats=6 --new
---filter-tcp=443 --dpi-desync=split2 --dpi-desync-repeats=2 --dpi-desync-split-seqovl=681 --dpi-desync-split-pos=1 --dpi-desync-fooling=badseq,hopbyhop2 --dpi-desync-split-seqovl-pattern="/opt/zapret/files/fake/tls_clienthello_www_google_com.bin" --hostlist-domains=/tmp/zapret.lst --new
+--filter-tcp=443 --dpi-desync=split2 --dpi-desync-repeats=2 --dpi-desync-split-seqovl=681 --dpi-desync-split-pos=1 --dpi-desync-fooling=badseq --dpi-desync-split-seqovl-pattern="/opt/zapret/files/fake/tls_clienthello_www_google_com.bin" --hostlist=/tmp/zapret.lst
 "
 
 MODE_FILTER=none
