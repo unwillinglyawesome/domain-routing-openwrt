@@ -1,6 +1,6 @@
 install_zapret() {
-    ZAPRET_URL="https://github.com/bol-van/zapret/releases/download/v71.4/zapret-v71.4-openwrt-embedded.tar.gz"
-    TOP_FOLDER="zapret-v71.4"
+    ZAPRET_URL="https://github.com/bol-van/zapret/releases/download/v72.2/zapret-v72.2-openwrt-embedded.tar.gz"
+    TOP_FOLDER="zapret-v72.2"
 
     wget "$ZAPRET_URL" -O /tmp/zapret.tar.gz
     tar -xzf /tmp/zapret.tar.gz -C /tmp/
