@@ -8,9 +8,9 @@ Shell скрипт и [роль для Ansible](https://galaxy.ansible.com/ui/st
 - [Копия в моём блоге](https://itdog.info/tochechnyj-obhod-blokirovok-po-domenam-na-routere-s-openwrt/)
 
 # Скрипт для установки
-## Установка zapret
+## Установка zapret2
 ```
-sh <(wget -O - https://raw.githubusercontent.com/unwillinglyawesome/domain-routing-openwrt/master/zapret-install.sh)
+sh <(wget -O - https://raw.githubusercontent.com/unwillinglyawesome/domain-routing-openwrt/master/zapret-install2.sh)
 ```
 ## Установка getdomains
 ```
