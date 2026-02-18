@@ -10,7 +10,7 @@ Shell скрипт и [роль для Ansible](https://galaxy.ansible.com/ui/st
 # Скрипт для установки
 ## Установка zapret2
 ```
-sh <(wget -O - https://raw.githubusercontent.com/unwillinglyawesome/domain-routing-openwrt/master/zapret-install2.sh)
+sh <(wget -O - https://raw.githubusercontent.com/unwillinglyawesome/domain-routing-openwrt/master/zapret2-install.sh)
 ```
 ## Установка getdomains
 ```
